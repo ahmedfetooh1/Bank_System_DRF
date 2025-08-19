@@ -13,3 +13,11 @@ class BankAccountSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return ManageBankAccount.create_bank_account(**validated_data)
+    
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = Transaction
+        fields = ['transaction_type','account','amount']
+        read_only_fields = ['transaction_number','created_at']
+        

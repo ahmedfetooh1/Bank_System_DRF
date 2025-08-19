@@ -20,3 +20,14 @@ class ManageBankAccount:
     def get_all_bank_accounts():
         return BankAccount.objects.all()
     
+class ManageTransaction:
+
+    @staticmethod
+    def get_all_transaction():
+        return Transaction.objects.select_related('account').all()
+    
+
+    @staticmethod
+    def get_transaction_by_id(pk:int):
+        return Transaction.objects.get(id=pk)
+    

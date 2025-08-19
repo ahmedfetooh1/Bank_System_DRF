@@ -10,7 +10,7 @@ from .utils import UniqueNumber
 class BankAccount(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE , related_name='bank_account')
     account_number = models.CharField(max_length=15 , primary_key=True , blank=True)
-    balance = models.DecimalField(max_digits=10,decimal_places=2,default=0.0 , validators=[MinValueValidator(0.00)])
+    balance = models.DecimalField(max_digits=10,decimal_places=2,default=0.0 , validators=[MinValueValidator(0.00)],db_index=True)
     created_at = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
@@ -23,7 +23,7 @@ class BankAccount(models.Model):
             )
         ]
         indexes = [
-            models.Index(fields=['balance'])
+                models.Index(fields=['balance'])
         ]
     
 
