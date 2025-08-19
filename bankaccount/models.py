@@ -67,3 +67,4 @@ class Transaction(models.Model):
         db_table = 'Transactions'
         ordering = ['-created_at']
 
+
