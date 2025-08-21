@@ -44,3 +44,22 @@ class RegisterView(APIView):
             'access' : str(refresh.access_token),
         },status= status.HTTP_201_CREATED)
 
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self,request):
+        try :
+            refresh_token = request.data.get("refresh")
+
+            if not refresh_token :
+                return Response({'error':'Refresh token is required'},status=status.HTTP_400_BAD_REQUEST)
+            
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({'message':'Successfuly logout'},status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            return Response({'error':'Invalid token'},status=status.HTTP_400_BAD_REQUEST)
+        
