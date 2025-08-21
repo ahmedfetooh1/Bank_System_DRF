@@ -11,7 +11,7 @@ from .services import ManageBankAccount , ManageTransaction
 
 class BankAccountListView(generics.ListCreateAPIView):
     queryset = ManageBankAccount.get_all_bank_accounts()
-    serializer_class = BankAccountSerializer
+    serializer_class = BankAccountSerializer 
 
 
 
