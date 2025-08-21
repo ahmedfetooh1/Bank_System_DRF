@@ -20,4 +20,3 @@ class TransactionSerializer(serializers.ModelSerializer):
         model = Transaction
         fields = ['transaction_type','account','amount']
         read_only_fields = ['transaction_number','created_at']
-        
